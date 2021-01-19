@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_01_19_032906) do
 
   create_table "order_details", force: :cascade do |t|
@@ -31,6 +32,26 @@ ActiveRecord::Schema.define(version: 2021_01_19_032906) do
     t.string "post_code"
     t.integer "status"
     t.integer "payment_method"
+=======
+ActiveRecord::Schema.define(version: 2021_01_19_042616) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "customer_id"
+    t.integer "amount"
+>>>>>>> dd482a31d5694213b117ab066021ded9aef62d1c
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
