@@ -1,0 +1,27 @@
+// Place all the styles related to the customer::homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-visual-background {
+  background-color: #fae3d;
+  height: 250px;
+  position: relative;
+}
+
+.main-visual-content {
+  position: absolute;
+  border: solid 5px;
+  border-color: #ffffff;
+  top: 10%;
+  left: 12%;
+  height: 200px;
+  width: 400px;
+}
+
+.main-visual-content-text {
+  position: absolute;
+  top: 20%;
+  left: 8%;
+  color: #5d1b1d;
+  text-align: center;
+  line-height: 2em;
+}
