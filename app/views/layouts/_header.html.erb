@@ -1,0 +1,91 @@
+<header>
+    <nav class="nav navbar-nav navbar-left title">
+      <div class="container">
+      <% if admin_signed_in? %>
+      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+      <% else %>
+      <%= link_to "NaganoCAKE",  class: "fas fa-birthday-cake" %>
+      <% end %>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if customer_signed_in? %>
+
+          <!--カスタマーがログインしている時 -->
+          <li class="header-name">
+            ようこそ、<%= full_name(current_customer) %>さん！
+          </li>
+          <li>
+            <%= link_to "マイページ", customers_path(current_customer), class: "header_btn home" %>
+          </li>
+          <li>
+            <%= link_to "商品一覧", products_path, class: "header_btn briefcase" %>
+          </li>
+          <li class="dropdown">
+            <%= link_to "#", class: "header_btn dropdown-toggle list",
+             'data-toggle': :dropdown do %>ジャンル検索<span class="caret"></span>
+            <% end %>
+            <ul class="dropdown-menu">
+              <% Genre.all.each do |genre| %>
+                <% if genre.is_valid == true %>
+			            <li class="genre_dropdown">
+                    <%= link_to admin_genre_path(genre), method: :get do %>
+                      <%= genre.name %>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% end %>
+		        </ul>
+          </li>
+          <li>
+            <%= link_to customers_cart_items_path, data: {"turbolinks" => false},
+             class: "header_btn shopping-cart" do %>カート(<%= current_customer.cart_items.count %>個)
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "header_btn log-out" %>
+          </li>
+
+        <% elsif admin_signed_in? %>
+
+          <!-- 管理者がログインしている時 -->
+          <li>
+            <%= link_to "商品一覧", admin_products_path, class: "header_btn " %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", admin_customers_path, class: "header_btn user"  %>
+          </li>
+          <li>
+            <%= link_to "注文履歴一覧", admin_orders_path, class: "header_btn  " %>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", admin_genres_path, class: "header_btn list" %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "header_btn log-out" %>
+          </li>
+
+
+        <% else %>
+
+
+
+         <li>
+            <%= link_to "About", products_path, class: "header_btn " %>
+          </li>
+
+          <li>
+            <%= link_to "商品一覧", products_path, class: "header_btn " %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path, data: {"turbolinks" => false}, class: "header_btn edit" %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path, class: "header_btn log-in" %>
+          </li>
+
+        <% end %>
+      </ul>
+    </nav>
+    </div>
+</header>
