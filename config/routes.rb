@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :customers
-  devise_for :admins
+  devise_for :customers, controllers: {
+    sessions: "customers/sessions",
+    registrations: "customers/registrations",
+    passwords: "customer/passwords",
+  }
+
+  devise_for :admins, controllers: {
+    sessions: "admins/sessions",
+    registrations: "admins/registrations",
+    passwords: "admins/passwords",
+  }
 
 #顧客側ルート
   scope module: :customer do
@@ -26,9 +35,9 @@ Rails.application.routes.draw do
       end
     end
     resources :addresses, except: [:new, :show]
+    resources :products, only: [:index, :show]
   end
 
-  resources :products, only: [:index, :show]
 
   #管理者側ルート
   namespace :admin do
