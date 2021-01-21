@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>注文情報確認</h2>
+    </div>
+    <div class="col-xs-7">
+      <table class="table table-bordered">
+      	<thead>
+      		<tr class = "active">
+      			<th>商品名</th>
+      			<th>単価（税込）</th>
+      			<th>数量</th>
+      			<th>小計</th>
+      		</tr>
+      	</thead>
+        <%# @.each do |cart_item| %>
+        	<tbody>
+        		<tr>
+        		  <td>
+        		    <%#= attachment_image_tag cart_item.item, :image, :fill, 50, 50 %>
+        		    <%#= cart_item.item.name %>
+        		  </td>
+        			<td> プライス </td>
+        			<td> 数量 </td>
+        		</tr>
+        	</tbody>
+        <%# end %>
+      </table>
+    </div>
+    <div class=" col-xs-5">
+      <table class="table table-bordered">
+      	<thead>
+      	</thead>
+      	<tbody>
+      		<tr>
+      			<td class = "active">送料</td>
+      			<td>800</td>
+      		</tr>
+      		<tr>
+      		  <td class = "active">商品合計</td>
+      		</tr>
+      		<tr>
+      		  <td class = "active">請求金額</td>
+      		</tr>
+      	</tbody>
+      </table>
+    </div>
+    <div class="col-xs-7">
+      <table class = "table block">
+        <tbody>
+          <tr class ="w-3000">
+            <td>支払方法</td>
+              <td>支払い方法 </td>
+          </tr>
+          <tr>
+            <td>お届け先</td>
+            <td> 〒      配送先  <br> 名前 </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-xs-offset-5 col-xs-4">
+      <%#= form_with model:, url: {controller: 'orders', action: 'create' }, local:true do |f| %>
+        <%#= f.hidden_field :customer_id, value:  %>
+        <%#= f.hidden_field :payment_method, value: %>
+        <%#= f.hidden_field :postal_code, value:  %>
+        <%#= f.hidden_field :address, value: %>
+        <%#= f.hidden_field :name, value: %>
+        <%#= f.hidden_field :shipping_cost, value: 800 %>
+        <%#= f.hidden_field :total_payment, value: (sum + 800).to_i %>
+        <%#= f.hidden_field :status, value: 0 %>
+        <%# .each do |cart_item| %>
+          <%#= f.fields_for :order_details do |order_detail| %>
+            <%#= order_detail.hidden_field :order_id, value: cart_item.id %>
+            <%#= order_detail.hidden_field :item_id, value: cart_item.item.id %>
+            <%#= order_detail.hidden_field :amount, value: cart_item.amount %>
+            <%#= order_detail.hidden_field :price, value: (sum + 800).to_i %>
+          <%# end %>
+        <%# end %>
+        <%#= f.submit "注文を確定する", class: "confirm-order-btn" %>
+      <%# end %>
+    </div>
+  </div>
+</div>
