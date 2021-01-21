@@ -22,13 +22,14 @@ Rails.application.routes.draw do
       collection do
         get 'confirm'
         get 'complete'
-        get "my_page" => "customers#"
+        get "my_page" => "customers#show"
       end
     end
     resources :addresses, except: [:new, :show]
+    resources :products, only: [:index, :show]
   end
 
-  resources :products, only: [:index, :show]
+  
 
   #管理者側ルート
   namespace :admin do
