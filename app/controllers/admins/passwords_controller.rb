@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admins::PasswordsController < Devise::PasswordsController
+  before_action :configure_permitted_parameters , if: :devise_controller?
   # GET /resource/password/new
   # def new
   #   super
@@ -31,4 +32,7 @@ class Admins::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password])
+  end
 end
