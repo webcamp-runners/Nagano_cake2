@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :customers, controllers: {
+
     sessions: "customers/sessions",
     registrations: "customers/registrations",
     passwords: "customer/passwords",
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 #顧客側ルート
   scope module: :customer do
     get "/" => "homes#top"
-    get 'about'
+    get 'about' => "homes#about"
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
@@ -37,7 +38,6 @@ Rails.application.routes.draw do
     resources :addresses, except: [:new, :show]
     resources :products, only: [:index, :show]
   end
-
 
   #管理者側ルート
   namespace :admin do
