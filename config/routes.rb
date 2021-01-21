@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     end
     resources :addresses, except: [:new, :show]
     resources :products, only: [:index, :show]
+  end
 
   #管理者側ルート
   namespace :admin do
