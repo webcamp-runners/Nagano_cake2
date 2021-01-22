@@ -13,32 +13,17 @@
 
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
-            ようこそ、<%= full_name(current_customer) %>さん！
+            ようこそ、<%= current_customer.last_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customers_path(current_customer), class: "header_btn home" %>
+            <%= link_to "マイページ", customer_path(current_customer), class: "header_btn home" %>
           </li>
           <li>
             <%= link_to "商品一覧", products_path, class: "header_btn briefcase" %>
           </li>
-          <li class="dropdown">
-            <%= link_to "#", class: "header_btn dropdown-toggle list",
-             'data-toggle': :dropdown do %>ジャンル検索<span class="caret"></span>
-            <% end %>
-            <ul class="dropdown-menu">
-              <% Genre.all.each do |genre| %>
-                <% if genre.is_valid == true %>
-			            <li class="genre_dropdown">
-                    <%= link_to admin_genre_path(genre), method: :get do %>
-                      <%= genre.name %>
-                    <% end %>
-                  </li>
-                <% end %>
-              <% end %>
-		        </ul>
-          </li>
+          
           <li>
-            <%= link_to customers_cart_items_path, data: {"turbolinks" => false},
+            <%= link_to cart_items_path, data: {"turbolinks" => false},
              class: "header_btn shopping-cart" do %>カート(<%= current_customer.cart_items.count %>個)
             <% end %>
           </li>
