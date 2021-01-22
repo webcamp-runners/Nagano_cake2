@@ -13,9 +13,10 @@
 
           <!--カスタマーがログインしている時 -->
           <li class="header-name">
+            ようこそ、<%= current_customer.first_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", my_page_orders_path(current_customer), class: "header_btn home" %>
+            <%= link_to "マイページ", my_page_customers_path(current_customer.id), class: "header_btn home" %>
 
           </li>
           <li>

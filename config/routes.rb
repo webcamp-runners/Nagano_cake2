@@ -22,24 +22,20 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
+    end
+
+      end
+      resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+        get "my_page" => "customers#show"
       end
     end
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
   end
 
-    resources :customers, only: [:show, :edit, :update] do
-    resources :products, only: [:index, :show]
-    resources :addresses, except: [:new, :show]
-    end
-    resources :customers, only: [:show, :edit, :update] do
-      collection do
-        get 'unsubscribe'
-        patch 'withdraw'
-        get "my_page" => "customers#show"
-    end
-
-    end
     resources :orders, only: [:new, :index, :create] do
       collection do
         get 'confirm'
