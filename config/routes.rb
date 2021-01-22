@@ -24,22 +24,22 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
+    resources :products, only: [:index, :show]
+    resources :addresses, except: [:new, :show]
+  end
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdraw'
+        get "my_page" => "customers#show"
       end
     end
     resources :orders, only: [:new, :index, :create] do
       collection do
         get 'confirm'
         get 'complete'
-        get "my_page" => "customers#show"
       end
     end
-    resources :addresses, except: [:new, :show]
-    resources :products, only: [:index, :show]
-  end
 
   #管理者側ルート
   namespace :admin do
