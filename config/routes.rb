@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
   end
+
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
