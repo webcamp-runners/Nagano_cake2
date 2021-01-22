@@ -29,11 +29,16 @@ Rails.application.routes.draw do
   end
 
     resources :customers, only: [:show, :edit, :update] do
+    resources :products, only: [:index, :show]
+    resources :addresses, except: [:new, :show]
+    end
+    resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdraw'
         get "my_page" => "customers#show"
-      end
+    end
+
     end
     resources :orders, only: [:new, :index, :create] do
       collection do
@@ -52,4 +57,5 @@ Rails.application.routes.draw do
     resource :order_details, only: [:update]
   end
 
+end
 end
