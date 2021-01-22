@@ -25,20 +25,22 @@ Rails.application.routes.draw do
       end
     end
     resources :customers, only: [:show, :edit, :update] do
+    resources :products, only: [:index, :show]
+    resources :addresses, except: [:new, :show]
+    end
+    resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
         patch 'withdraw'
-      end
+        get "my_page" => "customers#show"
+    end
     end
     resources :orders, only: [:new, :index, :create] do
       collection do
         get 'confirm'
         get 'complete'
-        get "my_page" => "customers#"
       end
     end
-    resources :addresses, except: [:new, :show]
-    resources :products, only: [:index, :show]
 
   #管理者側ルート
   namespace :admin do
@@ -49,5 +51,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
     resource :order_details, only: [:update]
   end
+
+end
 
 end
