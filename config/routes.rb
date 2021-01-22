@@ -24,6 +24,9 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
+    resources :products, only: [:index, :show]
+    resources :addresses, except: [:new, :show]
+   end
     resources :customers, only: [:show, :edit, :update] do
       collection do
         get 'unsubscribe'
@@ -37,9 +40,8 @@ Rails.application.routes.draw do
         get "my_page" => "customers#"
       end
     end
-    resources :addresses, except: [:new, :show]
-    resources :products, only: [:index, :show]
-
+    
+    
   #管理者側ルート
   namespace :admin do
     get "/" => "homes#top"
@@ -50,4 +52,4 @@ Rails.application.routes.draw do
     resource :order_details, only: [:update]
   end
 
-end
+ end
