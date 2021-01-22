@@ -32,14 +32,11 @@ Rails.application.routes.draw do
       end
     end
     resources :products, only: [:index, :show]
-
   end
-
     resources :orders, only: [:new, :index, :create] do
       collection do
         get 'confirm'
         get 'complete'
-
       end
     end
     resources :addresses, except: [:new, :show]
@@ -55,4 +52,5 @@ Rails.application.routes.draw do
     resource :order_details, only: [:update]
   end
 
+end
 end
