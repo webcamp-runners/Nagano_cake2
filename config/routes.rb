@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       collection do
         delete 'destroy_all'
     end
+
       end
       resources :customers, only: [:show, :edit, :update] do
       collection do
@@ -34,15 +35,13 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
   end
-  
+
     resources :orders, only: [:new, :index, :create] do
       collection do
         get 'confirm'
         get 'complete'
       end
     end
-
-
 
   #管理者側ルート
   namespace :admin do
