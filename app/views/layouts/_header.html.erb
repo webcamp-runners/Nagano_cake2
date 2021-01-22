@@ -16,7 +16,7 @@
             ようこそ、<%= full_name(current_customer) %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", customers_path(current_customer), class: "header_btn home" %>
+            <%= link_to "マイページ", customers_path(current_customer.first_name_kana), class: "header_btn home" %>
           </li>
           <li>
             <%= link_to "商品一覧", products_path, class: "header_btn briefcase" %>
