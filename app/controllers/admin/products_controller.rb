@@ -3,41 +3,47 @@ before_action :set_product, only: [:show, :edit, :update]
 before_action :set_genres, only: [:new, :edit, :index, :create, :update]
 before_action :authenticate_admin!
 
-
-
-
 def index
-@products = Product.all.page(params[:page]).per(10)
+  @product = Product.all.page(params[:page]).per(10)
 end
 
 def show
-
+  @product = Product.all
 end
 
 def new
- @product = Product.new
+  @product = Product.new
+  @genre = Genre.all
 end
 
 def edit
-
+  @product = Product.find(params[:id])
+  
 end
 
 def update
- if @product.update(product_params)
-    flash[:success] = "商品内容をを変更しました"
-    redirect_to admin_product_path(@product)
- else
-  render :edit
- end
+  @product = Product.find(params[:id])
+  @genre = Genre.all
+  if @product.update(product_params)
+  redirect_to product_path(@product.id)
+  else
+    render :edit
+  end
 end
 
 def create
- @product = Product.new(product_params)
+  @product = Product.new(product_params)
   if @product.save
-    flash[:notice] = "新商品を登録しました"
-    redirect_to admin_product_path(@product)
+     flash[:notice] = "新商品を登録しました"
+     redirect_to admin_products_path(@product)
   else
     render :new
   end
 end
+
+private
+  def product_params
+    params.require(:product).permit(:name, :image, :introduction, :is_active, :price, :genre_id)
+  end
+
 end

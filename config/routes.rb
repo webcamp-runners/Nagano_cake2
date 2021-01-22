@@ -24,6 +24,10 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
+    resources :products, only: [:index, :show]
+    resources :addresses, except: [:new, :show]
+  end
+
     resources :customers, only: [:show, :edit, :update] do
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
@@ -34,6 +38,7 @@ Rails.application.routes.draw do
         patch 'withdraw'
         get "my_page" => "customers#show"
     end
+
     end
     resources :orders, only: [:new, :index, :create] do
       collection do
@@ -53,5 +58,4 @@ Rails.application.routes.draw do
   end
 
 end
-
 end
