@@ -1,49 +1,52 @@
-<div class="row">
-    <div class="col-md-12">
-      <div class="pull-left margin-bottom">
-        <h3 class="header-background">ショッピングカート</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div>
+        <h4>ショッピングカート</h4>
+        <div><%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %></div>
       </div>
-      
-     
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>商品名</th>
-            <th>単価（税込）</th>
-            <th>数量</th>
-            <th>小計</th>
-            <th></th>
-          </tr>
-        </thead>
-         
-      </table>
-            <div class="row">
-            <div class="col-xs-3 margin-bottom">
-              <%= link_to do %>
-              <span class="btn btn-info glyphicon glyphicon-shopping-cart">買い物を続ける</span>
-              <% end %>
-            </div>
-            <tr>
-            <td>
-                  <div class="col-md-3 col-md-offset-6 text-left">
-                    <table class="table table-bordered">
-                      <tr class="row">
-                        <td class="col-xs-5">
-                          合計金額
-                        </td>
-                        <td class="col-xs-7">
-                         
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-            </td>
-            </tr>
-            </table>
-            </div>
-            <div class="col-md-4 col-md-offset-4 text-center">
-              <%= link_to " 情報入力に進む", new_order_path, class: "glyphicon glyphicon-pencil btn btn-success" %>
-            </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">商品名</th>
+          <th scope="col">単価（税込）</th>
+          <th scope="col">数量</th>
+          <th scope="col">小計</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= attachment_image_tag cart_item.item,:image, fallback: "no-image.png", size:"40x40", class:"attachment user profile_image fallback" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= (cart_item.item.tax_exclude_price * 1.1).to_i %></td>
+          <td>
+             <%= form_with model: [:customer, cart_item], url: cart_item_path(cart_item), local: true do |f| %>
+               <%= f.select :amount, [["1","1"],["2","2"],["3","3"],["4","4"],["5","5"],["6","6"],["7","7"],["8","8"],["9","9"]], value: "cart_item.amount" %>
+               <%= f.submit "変更", class: "btn btn-success" %>
+             <% end %>
+          </td>
+          <td><%= cart_item.subtotal.to_i %></td>
+          <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div>
+      <div><%= link_to "買い物を続ける", cart_items_path, class: "btn btn-primary" %></div>
+        <div>
+            <td>合計金額</td>
+            <%= current_customer.cart_total_price %>
         </div>
     </div>
-    
+    <div><%= link_to "情報入力に進む", orders_path, class: "btn btn-success" %></div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
