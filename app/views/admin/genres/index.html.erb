@@ -4,7 +4,7 @@
       <%= form_with model:[:admin, @genre], local:true do |f| %>
         <div class="col-md-offset-1">
           <%= f.text_field :name  %>
-          
+
           <%= f.submit "追加", class: "btn btn-info" %>
         </div>
       <% end %>

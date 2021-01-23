@@ -1,4 +1,7 @@
 class Customer::CartItemsController < ApplicationController
+ before_action :set_cart_item, only: [:update, :destroy]
+ before_action :authenticate_customer!
+
 
   def create
     cart_item = CartItem.new(cart_item_params)
@@ -21,6 +24,7 @@ class Customer::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.delete
     redirect_to cart_items_path
+
   end
 
   def destroy_all
@@ -29,11 +33,14 @@ class Customer::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  
+
   
    private
     def cart_item_params
       params.require(:cart_items).permit(:amount)
     end
+
+
+
 
 end
