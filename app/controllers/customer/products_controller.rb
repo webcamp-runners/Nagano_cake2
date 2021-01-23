@@ -9,5 +9,5 @@ class Customer::ProductsController < ApplicationController
     @products = Product.all
     @product = Product.find(params[:id])
   end
-  
+
 end
