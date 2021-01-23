@@ -1,6 +1,8 @@
 <h1>マイページ</h1>
+
 <% if @customer.id == current_customer.id %>
 <% end %>
+
 <tr>
   <p>登録情報</p>
   <p><%= link_to "編集する", edit_customer_path(@customer) %></p>
@@ -13,6 +15,7 @@
 		</tr>
 		<tr>
 			<td>カナ</td>
+
 			<td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
 		</tr>
 		<tr>
@@ -26,6 +29,7 @@
 		<tr>
 			<td>電話番号</td>
 			<td><%= @customer.phone_number %></td>
+			
 		</tr>
 		<tr>
 			<td>メールアドレス</td>
@@ -36,4 +40,5 @@
 <p>配送先</p>
 <%= link_to "一覧を見る",addresses_path %>
 <p>注文履歴</p>
+
 <%= link_to"一覧を見る",orders_path %>
