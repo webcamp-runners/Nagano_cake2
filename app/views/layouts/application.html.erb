@@ -10,6 +10,9 @@
   </head>
   <body>
     <%#= render "layouts/header" %>
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
