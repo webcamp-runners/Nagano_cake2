@@ -1,40 +1,19 @@
-<<<<<<< HEAD
 <div class="container">
-	<table>
-		<tbody>
-			<tr>
-				<td rowspan="2"></td>
-				<td>a</td>
-			</tr>
-			<tr>
-				<td><h3>いちごのショートケーキ</h3></td>
-				<td><p>栃⽊県産のとちおとめを贅沢に使⽤しています。</p></td>
-			</tr>
-			<tr>
-				<td><%= select :name, ['1', '2', '3'], {include_blank: '選択ボックス'}, class: 'sample' %></td>
-				<td>カートに入れる</td>
-			</tr>
-		</tbody>
-	</table>
-=======
-
-<div class="row">
-    <div class="col-md-4 col-md-offset-2 product-show">
-    </div>
-
+  <div class="row">
     <div class="col-xs-6 product-show">
       <div class="product-description">
         <div class="field product-name">
           <h2><%= @product.name %></h2>
         </div>
         <div class="field">
-          <%= @product.explanation %>
+          <%= @product.introduction %>
         </div>
         <div class="field product-price">
               <span class="tax">(税込)</span>
           </h3>
         </div>
       </div>
+
 
       <div class="field">
         <% if @product.is_sale == true %>
@@ -52,5 +31,4 @@
         <% end %>
       </div>
     </div>
->>>>>>> develop
 </div>

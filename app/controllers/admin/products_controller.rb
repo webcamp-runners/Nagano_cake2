@@ -1,14 +1,13 @@
 class Admin::ProductsController < ApplicationController
-before_action :set_product, only: [:show, :edit, :update]
-before_action :set_genres, only: [:new, :edit, :index, :create, :update]
-before_action :authenticate_admin!
+
 
 def index
-  @product = Product.all.page(params[:page]).per(10)
+  @products = Product.all
 end
 
 def show
-  @product = Product.all
+  @products = Product.all
+  @product = Product.find(params[:id])
 end
 
 def new
@@ -18,14 +17,14 @@ end
 
 def edit
   @product = Product.find(params[:id])
-  
+  @genre = Genre.all
 end
 
 def update
   @product = Product.find(params[:id])
   @genre = Genre.all
   if @product.update(product_params)
-  redirect_to product_path(@product.id)
+  redirect_to admin_products_path(@product.id)
   else
     render :edit
   end
