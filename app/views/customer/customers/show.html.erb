@@ -1,5 +1,4 @@
 <h1>マイページ</h1>
-
 <% if @customer.id == current_customer.id %>
 <% end %>
 
@@ -29,7 +28,6 @@
 		<tr>
 			<td>電話番号</td>
 			<td><%= @customer.phone_number %></td>
-			
 		</tr>
 		<tr>
 			<td>メールアドレス</td>
@@ -42,3 +40,4 @@
 <p>注文履歴</p>
 
 <%= link_to"一覧を見る",orders_path %>
+
