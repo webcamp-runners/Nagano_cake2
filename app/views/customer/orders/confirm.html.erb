@@ -1,8 +1,6 @@
 <div class="container">
+  <h2>注文情報確認</h2>
   <div class="row">
-    <div class="col-xs-12">
-      <h2>注文情報確認</h2>
-    </div>
     <div class="col-xs-7">
       <table class="table table-bordered">
       	<thead>
@@ -13,7 +11,7 @@
       			<th>小計</th>
       		</tr>
       	</thead>
-        <%# @.each do |cart_item| %>
+        <%# @cart.each do |cart_item| %>
         	<tbody>
         		<tr>
         		  <td>
@@ -45,12 +43,10 @@
       	</tbody>
       </table>
     </div>
-    <div class="col-xs-7">
-      <table class = "table block">
-        <tbody>
-          <tr class ="w-3000">
-            <td>支払方法</td>
-              <td>支払い方法 </td>
+    </div>
+
+            <div class="payment-method">支払方法</div>
+              
           </tr>
           <tr>
             <td>お届け先</td>
@@ -80,5 +76,4 @@
         <%#= f.submit "注文を確定する", class: "confirm-order-btn" %>
       <%# end %>
     </div>
-  </div>
 </div>

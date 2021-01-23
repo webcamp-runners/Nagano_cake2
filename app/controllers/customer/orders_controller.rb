@@ -1,5 +1,7 @@
 class Customer::OrdersController < ApplicationController
+  
   def new
+    @order = Order.new
   end
 
   def confirm
