@@ -1,15 +1,9 @@
 class Customer::OrdersController < ApplicationController
-
-  before_action :to_log, only: [:show]
   before_action :authenticate_customer!
-
-
-
 
   def new
    @order = Order.new
    @shipping_addresses = ShippingAddress.where(customer: current_customer)
-
   end
 
   def confirm
@@ -42,7 +36,7 @@ class Customer::OrdersController < ApplicationController
 
 
  def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price, :cart_item_id)
  end
 
   end

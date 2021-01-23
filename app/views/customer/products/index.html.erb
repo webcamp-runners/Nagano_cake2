@@ -6,10 +6,17 @@
           <div class="row">
           <tr>
 	           <td colspan="4">
+<<<<<<< HEAD
                <%= attachment_image_tag product, :image, :fill, 60, 60%>
 
 	             <h3><%= product.name %></h3>
 	             <p><%= product.introduction %></p>
+=======
+	             <%= link_to product_path(product) do %>
+	             <%= product.name %>
+	             <% end %>
+	             <% product.introduction %>
+>>>>>>> bd68850e33e7b51d9640634b566dc3d91a2ff077
 	           </td>
           </tr>
           </div>
@@ -17,8 +24,3 @@
         <% end %>
       </table>
   </div>
-
-
-
-
-
