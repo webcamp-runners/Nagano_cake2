@@ -21,5 +21,6 @@ indexrails show
      <td><%= customer.is_deleted %></td>
     </tr>
    <% end %>
+   <%= paginate @customer %>
   </tbody>
 </table>

@@ -1,8 +1,14 @@
 <!-- 管理側 -->
-<h5>会員情報編集</h5>
- <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+<%= @customer.first_name + @customer.last_name %>さんの会員情報編集
+
 <table>
 	<tbody>
+		<tr>
+			<td>会員ID</td>
+			<td><%=@customer.id %></td>
+			<td></td>
+		</tr>
+		<%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
 		<tr>
 			<td>氏名</td>
 			<td><%= f.text_field :first_name, autofocus: true, class: "new_inform" %></td>
