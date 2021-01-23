@@ -16,13 +16,13 @@
             ようこそ、<%= current_customer.first_name %>さん！
           </li>
           <li>
-            <%= link_to "マイページ", my_page_customers_path(current_customer.id), class: "header_btn home" %>
+            <%= link_to "マイページ", my_page_customers_path(current_customer), class: "header_btn home" %>
 
           </li>
           <li>
             <%= link_to "商品一覧", products_path, class: "header_btn briefcase" %>
           </li>
-          
+
           <li>
             <%= link_to cart_items_path, data: {"turbolinks" => false},
              class: "header_btn shopping-cart" do %>カート(<%= current_customer.cart_items.count %>個)
