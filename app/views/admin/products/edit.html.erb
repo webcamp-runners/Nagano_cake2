@@ -50,13 +50,13 @@
             <td>
               <div class="col-lg-8">
                 <label>販売ステータス<label>
-                <%= f.select :is_active, [['販売中', 1],['販売停止中', 2]] %>
+                <%= f.select :is_active, [['販売中', true],['販売停止中', false]] %>
               </div>
             </td>
           </tr>
           <tr>
             <td>
-              <%= f.submit "新規登録", class: "btn btn-success" %>
+              <%= f.submit "投稿更新", class: "btn btn-success" %>
             </td>
           </tr>
         </tbody>

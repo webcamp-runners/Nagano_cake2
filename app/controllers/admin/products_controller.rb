@@ -6,7 +6,8 @@ def index
 end
 
 def show
-  @product = Product.all
+  @products = Product.all
+  @product = Product.find(params[:id])
 end
 
 def new
@@ -16,14 +17,14 @@ end
 
 def edit
   @product = Product.find(params[:id])
-
+  @genre = Genre.all
 end
 
 def update
   @product = Product.find(params[:id])
   @genre = Genre.all
   if @product.update(product_params)
-  redirect_to product_path(@product.id)
+  redirect_to admin_products_path(@product.id)
   else
     render "edit"
   end

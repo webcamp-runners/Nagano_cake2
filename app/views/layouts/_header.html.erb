@@ -2,7 +2,7 @@
     <nav class="nav navbar-nav navbar-left title">
       <div class="container">
       <% if admin_signed_in? %>
-      <%= link_to "NaganoCAKE", admin_top_path, class: "fas fa-birthday-cake" %>
+      <%= link_to "NaganoCAKE", admin_path, class: "fas fa-birthday-cake" %>
       <% else %>
       <%= link_to "NaganoCAKE",  class: "fas fa-birthday-cake" %>
       <% end %>

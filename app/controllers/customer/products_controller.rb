@@ -1,14 +1,13 @@
 class Customer::ProductsController < ApplicationController
 
   def index
-
-    @product = Product.all
+    @products = Product.all
     @product = Product.new
-
   end
 
   def show
-
+    @products = Product.all
+    @product = Product.find(params[:id])
   end
   
 end
