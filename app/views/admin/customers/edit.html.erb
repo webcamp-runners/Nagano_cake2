@@ -1,6 +1,6 @@
-<!-- 顧客側 -->
+<!-- 管理側 -->
 <h5>会員情報編集</h5>
- <%= form_with model: @customer, local:true do |f| %>
+ <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
 <table>
 	<tbody>
 		<tr>
@@ -33,15 +33,19 @@
 			<td><%= f.text_field :email, autofocus: true, class: "new_inform" %></td>
 			<td></td>
 		</tr>
+		<tr>
+			<td>会員ステータス</td>
+			<td>
+			<%= f.radio_button :is_deleted, :true %>有効
+			<%= f.radio_button :is_deleted, :false %>退会
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
 		<td></td>
 		<td>
 			<%= f.submit "編集内容を保存" %>
 		</td>
-		<td>
-			<%= link_to "退会する",unsubscribe_customers_path %>
-		</td>
-		<tr>
-		</tr>
 	</tbody>
 </table>
  <% end %>
