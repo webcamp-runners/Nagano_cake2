@@ -1,11 +1,9 @@
 <div class="container">
-<div class="row">
-    <div class="col-md-4 col-md-offset-2 product-show">
-    </div>
+  <div class="row">
     <div class="col-xs-6 product-show">
       <div class="product-description">
         <div class="field product-name">
-          <h2><%= @product.product_name %></h2>
+          <h2><%= @product.name %></h2>
         </div>
         <div class="field">
           <%= @product.introduction %>
@@ -16,18 +14,15 @@
         </div>
       </div>
 
+
       <div class="field">
-        <% if @product.is_sale == true %>
-          <% if @product.genre.is_valid == true %>
-            <%= form_for(@cart_item , url: customers_cart_items_path, method: :post) do |f| %>
+        <% if @product.is_active == true %>
+            <%= form_for(@cart_item , url: cart_items_path, method: :post) do |f| %>
               <%= f.hidden_field :product_id, value: @product.id %>
-              <%= f.select :quantity, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+              <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
               <%= f.submit "カートに入れる", class: "btn btn-primary" %>
             <% end %>
-          <% else %>
-            <h3>売り切れ中</h3>
-          <% end %>
-        <% elsif @product.is_sale == false %>
+        <% elsif @product.is_active == false %>
           <h3>売り切れ中</h3>
         <% end %>
       </div>
