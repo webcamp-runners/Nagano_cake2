@@ -2,10 +2,12 @@
     <h1>商品一覧</h1>
       <table>
         <% @products.each do |product| %>
+
         <tbody>
           <div class="row">
           <tr>
 	           <td colspan="4">
+
                <%=# attachment_image_tag product, :image, :fill, 60, 60%>
 	             <h3><%= products.name %></h3>
 	             <p><%= product.introduction %></p>

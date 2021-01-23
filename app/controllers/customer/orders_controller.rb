@@ -1,4 +1,5 @@
 class Customer::OrdersController < ApplicationController
+
   before_action :to_log, only: [:show]
   before_action :authenticate_customer!
 
@@ -44,8 +45,5 @@ class Customer::OrdersController < ApplicationController
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
  end
 
-def address_params
-  params.require(:order).permit(:postal_code, :address, :name)
-end
   end
 end
