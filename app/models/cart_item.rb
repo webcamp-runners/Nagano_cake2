@@ -5,7 +5,6 @@ class CartItem < ApplicationRecord
   def tax_on_price
       @product = product.price * 1.10 * amount
       @product.floor
-  
   end
   
   

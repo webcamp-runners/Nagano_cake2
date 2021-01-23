@@ -26,7 +26,7 @@ def update
   if @product.update(product_params)
   redirect_to admin_products_path(@product.id)
   else
-    render "edit"
+    render :edit
   end
 end
 
