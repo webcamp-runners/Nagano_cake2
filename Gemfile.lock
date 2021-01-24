@@ -322,9 +322,9 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  enum_help
   factory_bot_rails
   faker
-  enum_help
   font-awesome-sass (~> 5.13)
   jbuilder (~> 2.5)
   jquery-rails
