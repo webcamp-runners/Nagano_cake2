@@ -58,7 +58,7 @@
       </table>
     </div>
     <div class="col-xs-offset-5 col-xs-4">
-      <%= form_with model:, url: {controller: 'orders', action: 'create' }, local:true do |f| %>
+      <%= form_with  url: {controller: 'orders', action: 'create' }, local:true do |f| %>
         <%= f.hidden_field :customer_id, value:  %>
         <%= f.hidden_field :payment_method, value: %>
         <%= f.hidden_field :postal_code, value:  %>
