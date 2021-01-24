@@ -3,7 +3,7 @@ class CartItem < ApplicationRecord
   belongs_to :product
 
   def tax_on_price
-      @product = product.price * 1.10 * amount
+      @product = product.price*amount*1.10
       @product.floor
   end
 

@@ -14,7 +14,6 @@ class Customer::OrdersController < ApplicationController
         @order.postcode = current_customer.postcode
         @order.address = current_customer.address
         @order.name = current_customer.last_name + current_customer.first_name
-        byebug
       elsif params[:order][:address] == "1"
 
         @order.postcode = @address.postcode
