@@ -34,15 +34,15 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
-  end
-
-    resources :orders, only: [:new, :index, :create] do
+     resources :orders, only: [:new, :index, :create] do
       collection do
-        get 'confirm'
+        post '/confirm' => 'orders#confirm'
         get 'complete'
       end
     end
+  end
 
+    
   #管理者側ルート
   namespace :admin do
     get "/" => "homes#top"

@@ -10,7 +10,7 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer = current_customer
     @customer.update(update_params)
-    redirect_to my_page_customers_path(@customer.id), notice: 'お客様情報を更新しました。'
+    redirect_to my_page_customers_path(@customer.id), notice: '(顧客側お客様情報を更新しました。'
   end
 
   def unsubscribe
@@ -27,6 +27,7 @@ class Customer::CustomersController < ApplicationController
 
   private
   def update_params
+
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :phone_number)
   end
 end
