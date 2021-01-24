@@ -20,31 +20,31 @@
   <div class="col-md-12">
     <h3>お届け先</h3>
       <div class="col-md-12">
-        <%= f.radio_button :address_type, :A, checked: true %>
-        <%= f.label :address_type, "ご自身の住所", {value: :A, style: "display: inline-block;"} %><br>
+        <%= f.radio_button :address_option, "0", checked: true %>
+        <%= f.label :address_option, "ご自身の住所" %><br>
           <div class="col-md-12">
             〒<%= current_customer.post_code.to_s.insert(3, "-") %>　<%= current_customer.address %><br>
             <%= current_customer.last_name %><%= current_customer.first_name %>
           </div>
       </div>
       <div class="col-md-12">
-        <%= f.radio_button :address_type, :B %>
-        <%= f.label :address_type, "登録済み住所", {value: :B, style: "display: inline-block;"} %></br>
+        <%= f.radio_button :address_option, "1" %>
+        <%= f.label :address_option, "登録済み住所" %></br>
           <div class="col-md-12">
             <%= f.collection_select :selected_address, current_customer.addresses, :id, :delivery_info %>
           </div>
       </div>
 
       <div class="col-md-12">
-        <%= f.radio_button :address_type, :C %>
-        <%= f.label :address_type, "新しいお届け先", {value: :C, style: "display: inline-block;"} %></br>
+        <%= f.radio_button :address_option, "2" %>
+        <%= f.label :address_option, "新しいお届け先" %></br>
       </div>
       <div class="new">
         <div class="col-md-12 order-type-c">
        <div class="form_group row">
             <label class="col-sm-3 control-label">郵便番号(ハイフンなし)</label>
             <div class="col-sm-3 newryoku">
-              <%= f.text_field :postal_code, class: "form-control" %>
+              <%= f.text_field :post_code, class: "form-control" %>
             </div>
         </div>
         <div class="form-group row">

@@ -1,3 +1,13 @@
+<% if @product.errors.any? %>
+<p><%= @product.errors.count %> errors prohibited this product from being saved:</p>
+<ul>
+  <% @product.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+
+</ul>
+<% end %>
+
 <div class="container">
  <div class="row">
   <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">

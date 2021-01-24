@@ -4,15 +4,15 @@
   <% @product.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
-
 </ul>
 <% end %>
+
 <div class="container">
  <div class="row">
   <div class="col-md-6">
     <h2 class="head-line title_h2 text-center">商品新規登録</h2>
-      <%= form_with model:[:admin,@product], local:true do |f| %>
 
+      <%= form_with model:[:admin,@product], method: :post, local:true do |f| %>
               <div class="form-group">
                 <%= f.label :"商品画像", class: "col-sm-3 control-label" %>
                 <%= f.attachment_field :image, class: "col-sm-6 control-label" %>
