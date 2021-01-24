@@ -27,7 +27,7 @@
     <h4><b>支払方法</b></h4>
   </div>
   <div class="col-md-4 ">
-    <%= @order.payment_type %>
+    <%= @order.payment_method %>
   </div>
 </div>
 
@@ -60,7 +60,7 @@
         <h4><b>商品合計</b></h4>
       </div>
       <div class="col-md-3 order-info">
-        <%= @order.order_total_price.to_s(:delimited) %>円
+        <%= @order.order_total_price %>円
       </div>
     </div>
     <div class="row">
@@ -68,7 +68,7 @@
         <h4><b>送料</b></h4>
       </div>
       <div class="col-md-3 order-info">
-        <%= @order.postage %>円
+        <%=　 %>円
       </div>
     </div>
     <div class="row">
@@ -76,7 +76,7 @@
         <h4><b>請求金額合計</b></h4>
       </div>
       <div class="col-md-3 order-info">
-        <%= @order.total_pay.to_s(:delimited) %>円
+        <%= %>円
       </div>
     </div>
   </div>
