@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-
+before_action :set_product, only: [:show, :edit, :update]
 
 def index
   @products = Product.all
@@ -24,6 +24,7 @@ def update
   @product = Product.find(params[:id])
   @genre = Genre.all
   if @product.update(product_params)
+    flash[:success] = "商品内容をを変更しました"
   redirect_to admin_products_path(@product.id)
   else
     render :edit
