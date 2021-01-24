@@ -1,44 +1,45 @@
-<div class="container">
-    <h1>商品詳細</h1>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-        <tbody>
-          <div class="row">
-          <tr>
-            <td>
+<div class="row">
+  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <h2 class="head-line title_h2 text-center">商品詳細</h2>
+      <div class="col-md-8 col-md-offset-2">
+        <table class="table table-hover table-inverse table-bordered">
+          <thead>
+            <tr class="info">
+              <th></th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
 	             <%= attachment_image_tag @product, :image, :fill, 60, 60%>
-	           </td>
-	           <td>
+	            </td>
+	            <td>
 	             <%= @product.name %>
-	           </td>
-	           <td>
+	            </td>
+	            <td>
 	             <%= @product.price %>
-	           </td>
-	           <td>
+	            </td>
+	            <td>
 	             <%= @product.genre.name %>
-	           </td>
-	           <td>
+	            </td>
+	            <td>
 	             <% if @product.is_active == true %>
 	               <p>販売中</p>
 	             <% else @product.is_active == false %>
 	               <p>販売停止中</p>
 	             <% end %>
-	           </td>
-	           <td>
-	             
+	            </td>
+	            <td>
 	             <%= link_to "Edit", edit_admin_product_path(@product) %>
 	           </td>
-          </tr>
-          </div>
-        </tbody>
-
-      </table>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
