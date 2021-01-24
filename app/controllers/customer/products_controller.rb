@@ -1,7 +1,7 @@
 class Customer::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.all.where(is_active: true).page(params[:page]).per(8)
     @product = Product.new
   end
 

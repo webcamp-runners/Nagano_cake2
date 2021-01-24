@@ -7,12 +7,12 @@
     <h3>支払方法</h3>
       <div class="col-md-12">
         <div>
-          <%= f.radio_button :payment_type, 'クレジットカード', checked: true %>
-          <%= f.label :payment_type, "クレジットカード", {value: "クレジットカード", style: "display: inline-block;"} %>
+          <%= f.radio_button :payment_method, 'クレジットカード', checked: true %>
+          <%= f.label :payment_metod, "クレジットカード", {value: "クレジットカード", style: "display: inline-block;"} %>
         </div>
         <div>
-          <%= f.radio_button :payment_type, '銀行振込' %>
-          <%= f.label :payment_type, "銀行振込", {value: "銀行振込", style: "display: inline-block;"} %>
+          <%= f.radio_button :payment_method, '銀行振込' %>
+          <%= f.label :payment_method, "銀行振込", {value: "銀行振込", style: "display: inline-block;"} %>
         </div>
       </div>
     </div>

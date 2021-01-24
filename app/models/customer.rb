@@ -4,18 +4,18 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :last_name_kana, presence: true
-  validates :post_code, presence: true
+  validates :last_name, presence: true, format: {with: /\A[一-龥ぁ-ん]/}
+  validates :first_name, presence: true, format: {with: /\A[一-龥ぁ-ん]/}
+  validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/}
+  validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/}
+  validates :post_code, presence: true, format: {with: /\A\d{7}\z/}
   validates :address, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/}
 
   has_many :orders
   has_many :cart_items
   has_many :addresses
-  
+
   def cart_total_price
     total = 0
     self.cart_items.each do |cart_item|
