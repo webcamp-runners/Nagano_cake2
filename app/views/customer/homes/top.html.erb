@@ -18,10 +18,23 @@
 
 <div class="container">
  <div class="row">
-  <div class="col-md--4">
+  <div class="col-5">
       <h3>新着商品</h3>
-
-        <div class="col-md--8">
+      <form class="form-inline"
+        <% @products.first(5). each do |product| %>
+        <div class="product-container">
+          <%= link_to product_path(product.id), class: "btn-link", :style=>"color:#0099FF;" do %>
+        <div id="img_field" class="product">
+          <%= attachment_image_tag(product, :image, size: "180x130") %>
+        </div>
+        <p class="products-name">
+          <%= product.name %>
+        </p>
+          <% end %>
+        </div>
+			  <% end %>
+			</form>
+        <div class="col-10">
           <%= link_to "もっと見る>", products_path %>
         </div>
       </div>

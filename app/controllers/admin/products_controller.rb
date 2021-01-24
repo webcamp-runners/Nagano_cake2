@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  before_action :set_genres, only: [:new, :edit, :index, :create, :update]
+
 
 def index
   @products = Product.all.page(params[:page])
@@ -24,7 +26,7 @@ def update
   @genre = Genre.all
   if @product.update(product_params)
     flash[:success] = "商品内容をを変更しました"
-  redirect_to admin_products_path(@product.id)
+    redirect_to admin_products_path(@product.id)
   else
     render :edit
   end
@@ -43,6 +45,10 @@ end
 private
   def product_params
     params.require(:product).permit(:name, :image, :introduction, :is_active, :price, :genre_id)
+  end
+
+  def set_genres
+    @genres = Genre.where(is_valid: true)
   end
 
 end
