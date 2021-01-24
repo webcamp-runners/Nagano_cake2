@@ -1,6 +1,10 @@
 class Admin::OrdersController < ApplicationController
+
   def index
-  @orders = Order.all.page(params[:page]).per(10)
+  @orders = Order.all
+  # @orders.order_detail = @order_detail.amount
+  @orders = Order.page(params[:page]).per(10)
+  @order_details = @orders.order_details
   end
 
   def show
@@ -16,5 +20,10 @@ class Admin::OrdersController < ApplicationController
   else
 	   render ""
   end
+  end
+
+  private
+  def order_params
+    params.require(:orders).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
   end
 end
