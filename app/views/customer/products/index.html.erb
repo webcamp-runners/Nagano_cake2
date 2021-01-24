@@ -6,11 +6,13 @@
           <div class="row">
           <tr>
 	           <td colspan="4">
+
                <%= attachment_image_tag product, :image, :fill, 100, 100%>
 	             <%= link_to product_path(product) do %>
 	             <%= product.name %>
 	             <% end %>
 	             <%= product.price %>
+
 	           </td>
           </tr>
           </div>
