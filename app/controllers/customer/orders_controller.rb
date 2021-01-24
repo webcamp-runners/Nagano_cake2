@@ -3,27 +3,25 @@ class Customer::OrdersController < ApplicationController
 
   def new
    @order = Order.new
-
+   @shipping_addresses = Address.where(customer: current_customer)
   end
 
   def confirm
       @order = Order.new
       @cart_items = current_customer.cart_items
       @order.payment_method = params[:order][:payment_method]
-      if params[:order][:address]== "0"
-        @order.postcode = current_customer.postcode
+      if params[:order][:address_option]== "0"
+        @order.post_code = current_customer.post_code
         @order.address = current_customer.address
         @order.name = current_customer.last_name + current_customer.first_name
-        byebug
-      elsif params[:order][:address] == "1"
-
-        @order.postcode = @address.postcode
+      elsif params[:order][:address_option] == "1"
+        @order.post_code = @address.post_code
         @order.address = @address.address
         @order.name = @address.name
-      elsif params[:order][:address] == "2"
-        @order.postcode = params[:postcode]
-        @order.address = params[:address]
-        @order.name = params[:name]
+      elsif params[:order][:address_option] == "2"
+        @order.post_code = params[:order][:post_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
       end
   end
 
@@ -51,7 +49,7 @@ class Customer::OrdersController < ApplicationController
       else
         redirect_to "/"
       end
-    end
+  end
 
 
 
@@ -71,6 +69,10 @@ class Customer::OrdersController < ApplicationController
 private
  def order_params
     params.require(:order).permit(:shipping_price, :billing, :name, :address, :postcode, :payment_method, :status)
+ end
+
+ def address_params
+    params.require(:order).permit(:postal_code, :address, :name)
  end
 
 end
