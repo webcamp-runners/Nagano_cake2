@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-		   <h2>会員一覧</h2>
+		   <h3 class= "m-3">会員一覧</h3>
      <table class="table">
       <thead>
          <tr>
@@ -22,9 +22,9 @@
               </td>
               <td><%= customer.email %></td>
               　　<% if customer.is_deleted == false %>
-              　　<td class =  "deleted-false" >退会</td>
+              　　<td class =  "deleted-fals text-secondary" >退会</td>
               　　<% else %>
-             　　　 <td class =  "deleted" >有効</td>
+             　　　 <td class =  "deleted text-success " >有効</td>
               　　<% end %>
           </tr>
           <% end %>
