@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:index, :show]
     resources :addresses, except: [:new, :show]
-     resources :orders, only: [:new, :index, :create] do
+     resources :orders, only: [:new, :index, :create,:show] do
       collection do
         post '/confirm' => 'orders#confirm'
         get 'complete'
