@@ -31,7 +31,7 @@
         <%= f.radio_button :address_option, "1" %>
         <%= f.label :address_option, "登録済み住所" %></br>
           <div class="col-md-12">
-            <%= f.collection_select :selected_address, current_customer.addresses, :id, :delivery_info %>
+            <%#= f.collection_select :address, current_customer.addresses, :id, :delivery_info %>
           </div>
       </div>
 

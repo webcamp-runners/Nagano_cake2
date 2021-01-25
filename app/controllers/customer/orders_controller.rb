@@ -26,29 +26,21 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
-      @order = Order.new(order_params)
-      @order.customer_id = current_customer.id
-      if @order.save
-        address = current_customer.addresses.new
-        address.name = @order.name
-        address.address = @order.address
-        address.postcode = @order.postcode
-        unless current_customer.addresses.exists?(address: address.address)
-          address.save
-        end
-        @cart_items = current_customer.cart_items.all
-        @cart_items.each do |cart_item|
-          @order_items = @order.order_items.new
-          @order_items.item_id = cart_item.item.id
-          #@order_items.tax_included_price = cart_item.item.tax_exclude_price
-          @order_items.amount = cart_item.amount
-          @order_items.save
-        end
-        current_customer.cart_items.destroy_all
-        redirect_to homes_path
-      else
-        redirect_to "/"
-      end
+      @order = current_customer.orders.new(order_params)
+      @order.save
+       redirect_to complete_orders_path
+      # カート商品の情報を注文商品に移動
+      @cart_items = current_cart
+      @cart_items.each do |cart_item|
+      OrderDetail.create(
+        product:  cart_item.product,
+        order:    @order,
+        quantity: cart_item.amount,
+        subprice: sub_price(cart_item)
+      )
+     end
+     # 注文完了後、カート商品を空にする
+     @cart_items.destroy_all
   end
 
 
@@ -67,12 +59,13 @@ class Customer::OrdersController < ApplicationController
   end
 
 private
+
  def order_params
-    params.require(:order).permit(:shipping_price, :billing, :name, :address, :postcode, :payment_method, :status)
+    params.require(:order).permit(:post_code, :address, :name, :payment_method, :total_price, :customer_id)
  end
 
  def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
+    params.require(:address).permit(:post_code, :address, :name)
  end
 
 end
