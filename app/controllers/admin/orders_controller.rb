@@ -3,12 +3,12 @@ class Admin::OrdersController < ApplicationController
   def index
   @orders = Order.all
   @orders = Order.page(params[:page]).per(10)
-  @order_detail = OrderDetail.find(params[:id])
+
   end
 
   def show
   @order = Order.find(params[:id])
-	@order.order_details = @order_details
+  @order_details = @order.order_details
   end
 
   def update
@@ -25,4 +25,8 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:orders).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
   end
+
+  # def order_detail_params
+  #   params.require(:order_details).permit(:order_id, :product_id, :price, :amount, :making_status)
+  # end
 end
