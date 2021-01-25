@@ -10,14 +10,17 @@
       <div>支払い方法</div>
       <div>注文ステータス</div>
       </div>
-      <% @order.each do |order| %>
+
     <div class="col-10">
-      <div><% order.customer.last_name %> <%= order.customer.first_name %></div>
-      <div><% order.created_at.strftime('%Y/%m/%d') %></div>
-      <div>〒<% order.post_code %><% order.address %></div>
-      <div></div>
-      <div><% order. %></div>
-      <div><% %></div>
+      <%#= link_to  admin_customer_path(@order.id) do %>
+					<%= @order.customer.last_name %>
+					<%= @order.customer.first_name %>
+					<%# end %>
+      <div><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+      <div>〒<%= @order.post_code %>　　<%= @order.address %></div>
+      <div><%= @order.payment_method %></div>
+      <div><%= @order.status %></div>
+      <div><%# %></div>
     </div>
   </div>
 
@@ -35,19 +38,25 @@
 	</thead>
 
 	<tbody>
+	  <% @order_details.each do |order_detail| %>
 		  <tr>
-  			<td><%= order.name %></td>
-  			<td><%= order.total_payment %></td>
-  			<td><%= order.order_detail.amount %></td>
-  			<td><%= %></td>
-  			<td><%= %></td>
+  			<td><%= order_detail.product.name %></td>
+  			<td><%= order_detail.price %></td>
+  			<td><%= order_detail.amount %></td>
+  			<td><%= ((order_detail.price)*(order_detail.amount)) %></td>
+  			<td><%= order_detail.making_status %></td>
 		</tr>
+		<% end %>
 	</tbody>
-	<% end %>
 </table>
 </div>
 <div class="col-3">
   <div>商品合計</div>
   <div>送料</div>
   <div>請求金額合計</div>
+</div>
+<div class="col-3">
+  <div><%= @order.total_payment %></div>
+  <div></div>
+  <div></div>
 </div>
