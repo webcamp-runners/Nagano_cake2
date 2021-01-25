@@ -33,7 +33,7 @@
       	<tbody>
       		<tr>
       			<td class = "active">送料</td>
-      			<td>800</td>
+      			<td><%= @order.shipping_cost %></td>
       		</tr>
       		<tr>
       		  <td class = "active">商品合計</td>
@@ -41,7 +41,10 @@
       		</tr>
       		<tr>
       		  <td class = "active">請求金額</td>
-      		  <td class = "active"><%= billing(@order).to_s(:delimited) %></td>
+      		  <td class = "active">
+      		    <% billing = 0 %>
+      		    <% billing = current_customer.cart_total_price + 800 %>
+      		    <%= billing.to_s(:delimited) %></td>
       		</tr>
       	</tbody>
       </table>

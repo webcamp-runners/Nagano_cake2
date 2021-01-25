@@ -14,7 +14,8 @@ class CartItem < ApplicationRecord
 
   # 請求額の計算
   def billing
-    total_price(current_cart) + 800
+   @billing = sub_total(current_cart) + order.shipping_cost
+   @billing.floor
   end
 
 

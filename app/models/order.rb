@@ -29,4 +29,10 @@ class Order < ApplicationRecord
      @sub_total.floor
   end
 
+    # 請求額の計算
+  def billing
+   @billing = sub_total(current_cart) + shipping_cost
+   @billing.floor
+  end
+
 end
