@@ -1,16 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-<h5>本当に退会しますか？</h5>
-<p>退会すると、会員登録情報や
-<br>これまでの購入履歴が閲覧できなくなります。
-<br>退会する場合は、「退会する」をクリックしてください。
-</p>
-</div>
-<div class="col-xs-offset-4 col-xs-4">
-<div>
-<%= link_to "退会しない",my_page_customers_path%>
-<%= link_to "退会する",withdraw_customers_path, method: :patch %>
+    <div class="col-12 ">
+      <h3 class="text-center mt-5">本当に退会しますか？</h3>
+      <h3 class="text-center pt-3">退会すると、会員登録情報や
+      <br>これまでの購入履歴が閲覧できなくなります。
+      <br>退会する場合は、「退会する」をクリックしてください。
+      </p>
+      <div class="flex justify-around mt2">
+      <p><span><%= link_to "退会しない",my_page_customers_path,class: "btn btn-primary" %>　</span>
+      <span><%= link_to "退会する",withdraw_customers_path, method: :patch,class: "btn btn-danger" %></span>
       </div>
     </div>
   </div>
