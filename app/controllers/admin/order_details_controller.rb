@@ -1,5 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   def update
+      byebug
+    #   @order = Order.find(params[:id])
   @order_detail = OrderDetail.find(params[:id])
 	  if @order_detail.update(order_detail_params)
 	  	flash[:success] = "制作ステータスを変更しました"
@@ -7,5 +9,9 @@ class Admin::OrderDetailsController < ApplicationController
 	  else
       render "show"
 	  end
+  end
+
+  def order_detail_params
+    params.require(:order_details).permit(:order_id, :making_status)
   end
 end
