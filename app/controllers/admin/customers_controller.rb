@@ -15,7 +15,7 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     @customer.update(customer_params)
-    redirect_to admin_customer_path(@customer), notice: 'お客様情報を更新しました。'
+      redirect_to admin_customer_path(@customer), notice: 'お客様情報を更新しました。'
   end
 
   private

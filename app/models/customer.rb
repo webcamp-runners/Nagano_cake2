@@ -16,6 +16,11 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :addresses
 
+  after_validation :set_defolt_value
+  def set_defolt_value
+    self.is_deleted = true
+  end
+
   def cart_total_price
     total = 0
     self.cart_items.each do |cart_item|
@@ -27,4 +32,9 @@ class Customer < ApplicationRecord
   def full_name
     self.last_name + self.first_name
   end
+
+  def active_for_authentication?
+    super && (is_deleted != false)
+  end
+
 end
