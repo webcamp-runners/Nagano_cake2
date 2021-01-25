@@ -15,9 +15,10 @@ class Customer::OrdersController < ApplicationController
         @order.address = current_customer.address
         @order.name = current_customer.last_name + current_customer.first_name
       elsif params[:order][:address_option] == "1"
-        @order.post_code = @address.post_code
-        @order.address = @address.address
-        @order.name = @address.name
+        address = Address.find(params[:order][:address])
+        @order.post_code = address.post_code
+        @order.address = address.address
+        @order.name = address.name
       elsif params[:order][:address_option] == "2"
         @order.post_code = params[:order][:post_code]
         @order.address = params[:order][:address]
@@ -30,13 +31,14 @@ class Customer::OrdersController < ApplicationController
       @order.save
        redirect_to complete_orders_path
       # カート商品の情報を注文商品に移動
-      @cart_items = current_cart
+      @cart_items = current_customer.cart_items
       @cart_items.each do |cart_item|
       OrderDetail.create(
-        product:  cart_item.product,
-        order:    @order,
-        quantity: cart_item.amount,
-        subprice: sub_price(cart_item)
+        product_id: cart_item.product.id,
+        order_id: @order.id,
+        amount: cart_item.amount,
+        price: cart_item.product.tax_on,
+        making_status: 0,
       )
      end
      # 注文完了後、カート商品を空にする
@@ -65,7 +67,7 @@ private
  end
 
  def address_params
-    params.require(:address).permit(:post_code, :address, :name)
+    params.require(:order).permit(:post_code, :address, :name)
  end
 
 end

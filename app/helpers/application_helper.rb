@@ -12,7 +12,7 @@ module ApplicationHelper
 
   # 小計の計算
   def sub_price(sub)
-    (tax_price(sub.product.tax_out_price) * sub.quantity)
+    (tax_price(sub.product.price) * sub.amount)
   end
 
   # 合計金額の計算
@@ -26,6 +26,6 @@ module ApplicationHelper
 
   # 請求額の計算
   def billing(order)
-    total_price(current_cart) + order.postage
+    total_price(current_cart) + order.shipping_cost
   end
 end
