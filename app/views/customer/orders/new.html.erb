@@ -21,7 +21,7 @@
     <h3>お届け先</h3>
       <div class="col-md-12">
         <%= f.radio_button :address_option, "0", checked: true %>
-        <%= f.label :address_option, "ご自身の住所" %><br>
+        <%= f.label :address, "ご自身の住所" %><br>
           <div class="col-md-12">
             〒<%= current_customer.post_code.to_s.insert(3, "-") %>　<%= current_customer.address %><br>
             <%= current_customer.last_name %><%= current_customer.first_name %>
@@ -29,15 +29,15 @@
       </div>
       <div class="col-md-12">
         <%= f.radio_button :address_option, "1" %>
-        <%= f.label :address_option, "登録済み住所" %></br>
+        <%= f.label :address, "登録済み住所" %></br>
           <div class="col-md-12">
-            <%= f.collection_select :selected_address, current_customer.addresses, :id, :delivery_info %>
+            <%= f.collection_select :address_shipping, current_customer.addresses, :id, :delivery_info %>
           </div>
       </div>
 
       <div class="col-md-12">
         <%= f.radio_button :address_option, "2" %>
-        <%= f.label :address_option, "新しいお届け先" %></br>
+        <%= f.label :address, "新しいお届け先" %></br>
       </div>
       <div class="new">
         <div class="col-md-12 order-type-c">
