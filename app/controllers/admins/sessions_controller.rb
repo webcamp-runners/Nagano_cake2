@@ -3,6 +3,8 @@
 class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 before_action :configure_permitted_parameters , if: :devise_controller?
+
+
   # GET /resource/sign_in
   # def new
   #   super

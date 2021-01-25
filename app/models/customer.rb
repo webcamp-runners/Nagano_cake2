@@ -16,10 +16,10 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :addresses
 
-  after_validation :set_defolt_value
-  def set_defolt_value
-    self.is_deleted = true
-  end
+  #after_validation :set_defolt_value
+  #def set_defolt_value
+    #self.is_deleted = true
+  #end
 
   def cart_total_price
     total = 0
