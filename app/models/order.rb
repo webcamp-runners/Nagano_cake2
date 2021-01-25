@@ -3,7 +3,7 @@ class Order < ApplicationRecord
        クレジットカード: 0,
        銀行振込: 1,
     }
-    
+
   enum status: {
     入金待ち:   0,
     入金確認:   1,
@@ -12,13 +12,21 @@ class Order < ApplicationRecord
     発送済み:   4
   }
 
-  
   has_many :order_details
   belongs_to :customer
-  
+
   validates :post_code, presence: true
   validates :address, presence: true
   validates :name, presence: true
-  
- 
+
+  def tax_on
+    @tax_on_price = self.product.price * 1.10
+    @tax_on_price.floor
+  end
+
+  def sub_total
+     @sub_total = product.price*amount*1.10
+     @sub_total.floor
+  end
+
 end
