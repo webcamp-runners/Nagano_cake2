@@ -36,7 +36,7 @@ def create
   @product = Product.new(product_params)
   if @product.save
      flash[:notice] = "新商品を登録しました"
-     redirect_to admin_products_path(@product)
+     redirect_to admin_product_path(@product.id)
   else
     render :new
   end
