@@ -8,13 +8,13 @@ class Customer::AddressesController < ApplicationController
   @address = Address.new(address_params)
   @address.customer_id = current_customer.id
   @address.save
-  redirect_to request.referer
+  redirect_to request.referer, notice: '配送先を追加しました'
  end
 
  def destroy
   @address = Address.find(params[:id])
   @address.destroy
-  redirect_to request.referer
+  redirect_to request.referer, notice: '配送先を消去しました'
  end
 
  def edit
@@ -23,8 +23,11 @@ class Customer::AddressesController < ApplicationController
 
  def update
   @address = Address.find(params[:id])
-  @address.update(address_params)
-  redirect_to addresses_path
+  if @address.update(address_params)
+   redirect_to addresses_path, notice: '配送先情報を更新しました'
+  else
+   render "edit"
+  end
  end
 
  private
