@@ -4,64 +4,51 @@
   <% @product.errors.full_messages.each do |message| %>
     <li><%= message %></li>
     <% end %>
-
 </ul>
 <% end %>
 
-<div class="container">
- <div class="row">
-  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-    <h2 class="head-line title_h2 text-center">商品編集</h2>
+<div class="container my-5">
+  <h2 class="head-line title_h2 text-center">商品編集</h2>
+   <div class="row mt-3">
+    <div class="offset-sm-1 col-sm-3">
       <%= form_with model:[:admin,@product], local:true do |f| %>
+        <div class="col-sm-4">
+      <table class="table table-borderless">
         <tbody>
           <tr>
-            <td>
-              <div class="col-lg-8">
-                <label>商品名<label>
-            </td>
+            <td>商品名</td>
             <td>
               <%= f.text_field :name %>
             </td>
-              </div>
           </tr>
           <tr>
-            <td>
-              <div class="col-lg-8">
-                <label>商品画像<label>
-                <%= f.attachment_field :image %>
-              </div>
+            <td>商品画像</td>
+            <td>  
+              <%= f.attachment_field :image %>
             </td>
           </tr>
           <tr>
-            <td>
-              <div class="col-lg-8">
-                <label>商品説明<label>
-                <%= f.text_area :introduction %>
-              </div>
+            <td>商品説明</td>
+            <td>  
+              <%= f.text_area :introduction %>
             </td>
           </tr>
           <tr>
-            <td>
-              <div class="col-lg-8">
-                <label>ジャンル<label>
-                <%= f.collection_select(:genre_id, @genre, :id, :name) %>
-              </div>
+            <td>ジャンル</td>
+            <td>  
+              <%= f.collection_select(:genre_id, @genre, :id, :name) %>
             </td>
           </tr>
           <tr>
+            <td>税抜価格</td>
             <td>
-              <div class="col-lg-8">
-                <label>税抜価格<label>
-                <%= f.number_field :price %>
-              </div>
+            <%= f.number_field :price %>
             </td>
           </tr>
           <tr>
+            <td>販売ステータス</td>
             <td>
-              <div class="col-lg-8">
-                <label>販売ステータス<label>
-                <%= f.select :is_active, [['販売中', true],['販売停止中', false]] %>
-              </div>
+              <%= f.select :is_active, [['販売中', true],['販売停止中', false]] %>
             </td>
           </tr>
           <tr>
@@ -70,7 +57,9 @@
             </td>
           </tr>
         </tbody>
+      </table>
       <% end %>
+   </div>
   </div>
  </div>
 </div>
