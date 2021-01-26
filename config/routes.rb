@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :genres, except: [:new, :show, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
-    resource :order_details, only: [:update]
+    resources :order_details, only: [:update]
   end
 
 end
