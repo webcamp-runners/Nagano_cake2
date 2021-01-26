@@ -1,36 +1,51 @@
-<div class="row">
-    <h2 class="head-line title_h2 text-center">商品詳細</h2>
-  <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
-	             <%= attachment_image_tag @product, :image, :fill, 60, 60%>
-      <div class="col-md-8 col-md-offset-2">
-        <table class="table table-hover table-inverse table-bordered">
+<div class="container my-5">
+  <div class="row">
+    <h2>商品詳細</h2>
+  </div>
 
-              <div class="form-group">
-	             <%= @product.name %>
-              </div>
+  <div class="row mt-3">
+    <div class="offset-sm-1 col-sm-3">
+      <%#= attachment_image_tag @item, :image, :fill, 200, 200, format: "jpeg", fallback: 'noimage.jpg', size: '200x200' %>
+    </div>
 
-              <div class="form-group">
-	             <%= @product.price %>
-              </div>
+    <div class="col-sm-4">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%#= @cart_item %></td>
+          </tr>
 
-              <div class="form-group">
-	             <%= @product.genre.name %>
-              </div>
+          <tr>
+            <td>商品説明</td>
+            <td><%#= @item %></td>
+          </tr>
 
-              <div class="form-group">
-	             <% if @product.is_active == true %>
-	               <p>販売中</p>
-	             <% else @product.is_active == false %>
-	               <p>販売停止中</p>
-	             <% end %>
-              </div>
+          <tr>
+            <td>ジャンル</td>
+            <td><%#= @genre %></td>
+          </tr>
 
-              <div class="form-group">
-	             <%= link_to "Edit", edit_admin_product_path(@product) %>
-              </div>
+          <tr>
+            <td>税込価格(税抜価格)</td>
+            <td>
+              <%#= @item %>(800)円
+            </td>
+          </tr>
 
-        </table>
-      </div>
+          <tr>
+            <td>販売ステータス</td>
+            <td>販売中</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="offset-sm-9 col-sm-2">
+      <%= link_to "編集する", edit_admin_product_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>

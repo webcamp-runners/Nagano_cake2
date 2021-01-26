@@ -6,7 +6,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    #@customer = Order.find(order_params[:id])
+
   end
 
   def edit
