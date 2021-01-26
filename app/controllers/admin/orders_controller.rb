@@ -1,9 +1,12 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-  @orders = Order.all
-  @orders = Order.page(params[:page]).per(10)
 
+   if params[:customer_id]
+     @orders = Order.where(customer_id: params[:customer_id]).page(params[:page]).per(10)
+   else
+     @orders = Order.page(params[:page]).per(10)
+   end
   end
 
   def show
@@ -23,6 +26,6 @@ class Admin::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
+    params.require(:orders).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
   end
 end
