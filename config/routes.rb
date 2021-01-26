@@ -45,7 +45,6 @@ Rails.application.routes.draw do
 
   #管理者側ルート
   namespace :admin do
-    get "/" => "homes#top"
     resources :products, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
