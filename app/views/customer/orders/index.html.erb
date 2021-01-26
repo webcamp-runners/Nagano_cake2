@@ -23,18 +23,19 @@
 					<%= order.address %></br>
 					<%= order.name %>
 				</td>
+
+
 				<td>
-				<% total_amount = 0%>
 				<% order.order_details.each do |order_detail| %>
-				<% total_amount += order_detail.amount %>
+					<%= order_detail.product.name %></br>
 				<% end %>
-					<%= total_amount %></br>
 				</td>
+
 				<td><%= %>円</td>
 				<td><%= order.status %></td>
 
 				<td>
-					<%= link_to '表示する', orders_path(order), class: 'btn btn-primary' %>
+					<%= link_to '表示する',  order_path(order.id),class: 'btn btn-primary' %>
 				</td>
 			</tr>
 			<% end %>

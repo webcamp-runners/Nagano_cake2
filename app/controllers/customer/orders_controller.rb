@@ -49,7 +49,8 @@ class Customer::OrdersController < ApplicationController
 
 
   def complete
-
+    cart_items = current_customer.cart_items.all
+    cart_items.destroy_all
   end
 
   def index
