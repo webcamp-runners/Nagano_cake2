@@ -34,5 +34,9 @@ class Order < ApplicationRecord
    @billing = sub_total(current_cart) + shipping_cost
    @billing.floor
   end
+  
+  def full_name
+    self.last_name + self.first_name
+  end
 
 end

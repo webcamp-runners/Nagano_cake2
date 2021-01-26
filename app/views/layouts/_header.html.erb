@@ -9,9 +9,11 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
       <% if admin_signed_in? %>
+
       <h2><%= link_to "NAGANO_CAKE", admin_products_path, class:"text-dark" %></h2>
       <% else %>
       <h2><%= link_to "NAGANO_CAKE", "/", class:"text-dark" %></h2>
+
       <% end %>
 
 
