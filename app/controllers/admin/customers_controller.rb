@@ -6,6 +6,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    
   end
 
   def edit
@@ -14,8 +15,11 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
+    if  @customer.update(customer_params)
       redirect_to admin_customer_path(@customer), notice: 'お客様情報を更新しました。'
+    else
+      render :edit
+    end
   end
 
   private

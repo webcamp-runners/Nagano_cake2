@@ -9,8 +9,11 @@ class Customer::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    @customer.update(update_params)
+    if  @customer.update(update_params)
     redirect_to my_page_customers_path(@customer.id), notice: 'お客様情報を更新しました。'
+  else
+    render :edit
+  end
   end
 
   def unsubscribe
