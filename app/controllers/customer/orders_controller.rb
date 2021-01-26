@@ -39,7 +39,6 @@ class Customer::OrdersController < ApplicationController
         amount: cart_item.amount,
         price: cart_item.product.tax_on,
         making_status: 0,
-
       )
      end
      # 注文完了後、カート商品を空にする
@@ -66,7 +65,7 @@ class Customer::OrdersController < ApplicationController
 private
 
  def order_params
-    params.require(:order).permit(:post_code, :address, :name, :payment_method, :total_price, :customer_id)
+    params.require(:order).permit(:post_code, :address, :name, :payment_method, :total_payment, :shipping_cost, :status, :customer_id)
  end
 
  def address_params

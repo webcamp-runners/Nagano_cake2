@@ -12,8 +12,6 @@
 				<th>注文詳細</th>
 			</tr>
 		</thead>
-
-
 　　　　<tbody>
 			<% @orders.each do |order| %>
 			<tr>
@@ -23,8 +21,6 @@
 					<%= order.address %></br>
 					<%= order.name %>
 				</td>
-
-
 				<td>
 				<% order.order_details.each do |order_detail| %>
 					<%= order_detail.product.name %></br>

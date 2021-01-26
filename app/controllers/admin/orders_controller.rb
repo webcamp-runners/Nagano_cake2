@@ -1,7 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-
    if params[:customer_id]
      @orders = Order.where(customer_id: params[:customer_id]).page(params[:page]).per(10)
    else
