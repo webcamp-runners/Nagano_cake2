@@ -1,84 +1,64 @@
-<div class="row">
-  <h3 class="header-background col-md-2">注文履歴詳細</h3>
-</div>
+<h2>注文履歴詳細</h2>
 
-<div class="row">
-  <div class="col-md-2">
-    <h4><b>購入者</b></h4>
-  </div>
-  <div class="col-md-4 ">
-    <%#= link_to @customer.full_name, admin_customer_path(@customer)%>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-2">
-    <h4><b>配送先</b></h4>
-  </div>
-  <div class="col-md-4 ">
-    〒<%= @order.post_code.to_s.insert(3, "-") %>
-    <%= @order.address %><br />
-     <%= @order.name %>
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-2">
-    <h4><b>支払方法</b></h4>
-  </div>
-  <div class="col-md-4 ">
-    <%= @order.payment_method %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-2">
-    <h4><b>注文ステータス</b></h4>
-  </div>
-  <%= @order.status %>
-</div>
-
-<div class="row order-table">
-  <div class="col-md-8">
-    <table class="table">
-      <thead>
-          <tr class="active">
-              <td>商品名 </td>
-              <td>単価(税込)</td>
-              <td>数量</td>
-              <td>小計</td>
-              <td>制作ステータス</td>
-          </tr>
-      </thead>
-    <%#= render 'admin/order_details/making_status', order_details: @order_details %>
-    </table>
-  </div>
-
-  <div class="col-md-4 payment-info">
-    <div class="row">
-      <div class="col-md-5">
-        <h4><b>商品合計</b></h4>
+<div class="container" style="margin-right: 0px">
+  <div class="row">
+    <div class="col-2">
+      <div>購入者</div>
+      <div>注文日</div>
+      <div>配送先</div>
+      <div></div>
+      <div>支払い方法</div>
+      <div>注文ステータス</div>
       </div>
-      <div class="col-md-3 order-info">
-        <%#= @order.%>円
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <h4><b>送料</b></h4>
-      </div>
-      <div class="col-md-3 order-info">
-        <%#= %>円
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <h4><b>請求金額合計</b></h4>
-      </div>
-      <div class="col-md-3 order-info">
-        <%= %>円
-      </div>
+
+    <div class="col-10">
+      <%= link_to  admin_customer_path(@order.customer) do %>
+					<%= @order.customer.last_name %>
+					<%= @order.customer.first_name %>
+					<% end %>
+      <div><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+      <div>〒<%= @order.post_code %>　　<%= @order.address %></div>
+      <div><%= @order.payment_method %></div>
+      <div><%= @order.status %></div>
     </div>
   </div>
+
+  <div class="row d-flex align-items-end" style="margin-top:50px">
+  <div class="col-8">
+  <table class="table">
+	<thead class="table-secondary">
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	  <% @order_details.each do |order_detail| %>
+		  <tr>
+  			<td><%= order_detail.product.name %></td>
+  			<td><%= order_detail.price %></td>
+  			<td><%= order_detail.amount %></td>
+  			<td><%= ((order_detail.price)*(order_detail.amount)) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+<div class="col-2">
+  <div>商品合計</div>
+  <div>送料</div>
+  <div>請求金額合計</div>
+</div>
+<div class="col-2">
+	<% total_price = 0 %>
+	<% @order.order_details.each do |order_detail| %>
+  	<% total_price += ((order_detail.price)*(order_detail.amount)) %>
+  	<% end %>
+  <div><%= total_price %>円</div>
+  <div>800円</div>
+  <div><%= ((total_price)+(800)) %>円</div>
+</div>
 </div>

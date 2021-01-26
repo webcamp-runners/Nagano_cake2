@@ -26,8 +26,12 @@
 					<%= order_detail.product.name %></br>
 				<% end %>
 				</td>
-
-				<td><%= %>円</td>
+      <div class="col-2">
+					<% total_price = 0 %>
+	       <% order.order_details.each do |order_detail| %>
+   	    <% total_price += ((order_detail.price)*(order_detail.amount)) %>
+  	     <% end %> 
+         <td> <%= total_price %>円</td>
 				<td><%= order.status %></td>
 
 				<td>
