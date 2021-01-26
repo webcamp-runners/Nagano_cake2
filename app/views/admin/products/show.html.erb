@@ -5,46 +5,73 @@
 
   <div class="row mt-3">
     <div class="offset-sm-1 col-sm-3">
+<<<<<<< HEAD
       <%= attachment_image_tag , :productimage, :fill, 200, 200, format: "jpeg", fallback: 'gettyimages', size: '200x200' %>
+=======
+      <%= attachment_image_tag @product, :image, :fill, 200, 200 %>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
     </div>
-
     <div class="col-sm-4">
       <table class="table table-borderless">
         <tbody>
           <tr>
             <td>商品名</td>
+<<<<<<< HEAD
             <td></td>
+=======
+            <td><%= @product.name %></td>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
           </tr>
 
           <tr>
             <td>商品説明</td>
+<<<<<<< HEAD
             <td></td>
+=======
+            <td><%= @product.introduction %></td>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
           </tr>
 
           <tr>
             <td>ジャンル</td>
+<<<<<<< HEAD
             <td></td>
+=======
+            <td><%= @product.genre.name %></td>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
           </tr>
 
           <tr>
             <td>税込価格(税抜価格)</td>
             <td>
+<<<<<<< HEAD
              
+=======
+              <p><%= @product.tax_on %>(<%= @product.price %>)円</p>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
             </td>
           </tr>
 
           <tr>
             <td>販売ステータス</td>
+<<<<<<< HEAD
             <td></td>
+=======
+            <td>
+             <% if @product.is_active == true %>
+             <p>販売中</p>
+             <% else @product.is_active == false %>
+             <p>売り切れ中</p>
+             <% end %>
+            </td>
+>>>>>>> 257a160b3c522957b3552c4a9cd89003dd5ddfe6
           </tr>
         </tbody>
-
       </table>
     </div>
   </div>
-
   <div class="row">
-    <div class="offset-sm-9 col-sm-2">
+    <div class="offset-5 col-sm-2">
       <%= link_to "編集する", edit_admin_product_path, class: "btn btn-success" %>
     </div>
   </div>
