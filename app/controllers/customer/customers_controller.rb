@@ -25,7 +25,7 @@ class Customer::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: false)
     reset_session
-    redirect_to new_customer_session_path
+    redirect_to "/"
   end
 
   private
