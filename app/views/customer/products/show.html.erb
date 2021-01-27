@@ -22,7 +22,7 @@
               <% if @product.is_active == true %>
                 <%= form_for(@cart_item , url: cart_items_path, method: :post) do |f| %>
                   <%= f.hidden_field :product_id, value: @product.id %>
-                  <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+                  <%= f.select :amount, options_for_select((1..10).to_a) %>
                   <%= f.submit "カートに入れる", class: "btn btn-primary" %>
                 <% end %>
               <% elsif @product.is_active == false %>
