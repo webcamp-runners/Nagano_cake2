@@ -1,24 +1,13 @@
-# README
+# ながのケーキ ECサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+チーム開発で作成したWEBサイトです
 
-Things you may want to cover:
+# 開発環境と推奨環境
 
-* Ruby version
+Ruby on Rails
 
-* System dependencies
+Ruby 2.5 以降 Rails 5.2 以降
 
-* Configuration
+# ER図
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# アプリケーション詳細設計書
