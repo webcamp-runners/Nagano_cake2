@@ -15,14 +15,19 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-  @order = Order.find(params[:id])
-  @order.update(order_params)
-     flash[:success] = "注文ステータスを変更しました"
-     redirect_to admin_order_path(@order)
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to admin_order_path(@order)
+    flash[:success] = "注文ステータスを変更しました"
+    @order_details = @order.order_details
+    if @order.status == "入金確認"
+      @order_details.update_all(making_status: 1 )
+      redirect_to admin_order_path(@order)
+    end
   end
 
   private
   def order_params
-    params.require(:orders).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
+    params.require(:order).permit(:customer_id, :total_payment, :shipping_cost, :name, :address, :post_code, :status, :payment_method)
   end
 end
